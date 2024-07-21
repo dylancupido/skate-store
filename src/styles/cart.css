@@ -1,0 +1,15 @@
+.cart-container {
+  padding: 20px;
+}
+
+.cart-summary {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.cart-total {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-right: 20px;
+}

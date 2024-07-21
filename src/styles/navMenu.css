@@ -1,0 +1,42 @@
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(43, 42, 42, 0.603);
+}
+
+.nav-items {
+  display: flex;
+  gap: 2rem;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.nav-link {
+  color: #000;
+  text-decoration: none;
+  font-size: 200;
+  font-weight: 500;
+  color: white;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.nav-account {
+  display: flex;
+  align-items: center;
+}
+
+.nav-account {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-img {
+  width: 30px;
+  height: 30px;
+  color: white;
+}

@@ -1,0 +1,22 @@
+.account-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.account-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.dropdown-menu {
+  min-width: 100px;
+}
+
+.account-button:hover {
+  background: grey;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
