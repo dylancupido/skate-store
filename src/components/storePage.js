@@ -37,7 +37,7 @@ const StorePage = () => {
                       className="btn-buy-now"
                       onClick={() => handleBuyNow(item)}
                     >
-                      Buy Now
+                      Buy Right Away
                     </Button>
                   </Card.Body>
                 </Card>
