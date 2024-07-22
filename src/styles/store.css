@@ -1,34 +1,55 @@
-/* Full-width background with an image for the container */
-.store-container {
-  background-image: url("./assets/backgroundStore.jpg"); /* Correct path for public folder */
-  background-size: cover; /* Ensures the image covers the entire container */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents repeating the image */
-  padding: 20px;
-  min-height: 100vh; /* Ensures full viewport height */
-  width: 100vw; /* Ensures full viewport width */
-  margin: 0; /* Removes default margin to ensure full-width effect */
+@font-face {
+  font-family: "BastradRegular";
+  src: url(/public/Bastrad-Regular.otf) format("opentype");
 }
 
-/* Style for h2 elements */
+.store-container {
+  position: relative;
+  background-image: url(/public/assets/backgroundStore.jpg);
+  background-size: auto;
+  background-position: center;
+  background-repeat: repeat;
+  padding: 20px;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+  padding-top: 60px;
+}
+
+.store-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+  pointer-events: none;
+}
+
 .group-title {
-  color: white; /* White text color */
+  position: relative;
+  color: white;
   margin-top: 20px;
   margin-bottom: 20px;
   font-weight: bold;
   text-align: center;
+  z-index: 2;
+  font-family: "BastradRegular";
+  font-size: 80px;
+  letter-spacing: 5px;
 }
 
-/* Card styling */
-.item-card {
-  border: 1px solid rgb(139, 132, 132) !important; /* Light grey border */
-  background-color: rgb(139, 132, 132); /* Grey background for the card */
+.card-container {
+  position: relative;
+  z-index: 2;
 }
 
 .card-img-top {
   height: 200px;
   object-fit: cover;
-  border-radius: 25px;
 }
 
 .card-title {
@@ -38,7 +59,7 @@
 
 .card-text {
   font-size: 1em;
-  color: white; /* Slightly lighter text color for readability */
+  color: black;
 }
 
 .card-body {
@@ -47,18 +68,16 @@
   justify-content: space-between;
 }
 
-/* Specific styling for the "Buy Now" button */
 .btn-buy-now {
-  background-color: #28a745; /* Green background for the button */
-  border: none; /* Removes border */
-  color: white; /* White text color */
+  background-color: rgba(43, 42, 42, 0.603);
+  border: none;
+  color: white;
 }
 
 .btn-buy-now:hover {
-  background-color: #218838; /* Darker green for hover effect */
+  background-color: #218838;
 }
 
-/* Media query for responsiveness */
 @media (max-width: 576px) {
   .card-img-top {
     height: 150px;

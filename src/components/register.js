@@ -1,7 +1,9 @@
 import React from "react";
 import { useFormik } from "formik";
 
+// Register component definition
 const Register = () => {
+  // Initialize Formik with initial values, submit handler, and validation logic
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -12,9 +14,11 @@ const Register = () => {
       confirmPassword: "",
     },
     onSubmit: (values) => {
+      // Handle form submission
       console.log("onSubmit", values);
     },
     validate: (values) => {
+      // Validation logic
       const errors = {};
       if (!values.firstName) {
         errors.firstName = "First name is required";
@@ -38,6 +42,7 @@ const Register = () => {
         errors.username = "Username is too long";
       }
 
+      // Password validation
       const length = /.{8,}/;
       const uppercase = /[A-Z]/;
       const lowercase = /[a-z]/;
@@ -71,10 +76,12 @@ const Register = () => {
     },
   });
 
+  // Render the registration form
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
         <div className="field">
+          {/* First Name input */}
           <input
             name="firstName"
             placeholder="First Name"
@@ -89,6 +96,7 @@ const Register = () => {
           </div>
         </div>
         <div className="field">
+          {/* Surname input */}
           <input
             name="surName"
             placeholder="Surname"
@@ -103,6 +111,7 @@ const Register = () => {
           </div>
         </div>
         <div className="field">
+          {/* Email input */}
           <input
             name="email"
             placeholder="Email"
@@ -115,6 +124,7 @@ const Register = () => {
           </div>
         </div>
         <div className="field">
+          {/* Username input */}
           <input
             name="username"
             placeholder="Username"
@@ -129,6 +139,7 @@ const Register = () => {
           </div>
         </div>
         <div className="field">
+          {/* Password input */}
           <input
             name="password"
             placeholder="Password"
@@ -144,6 +155,7 @@ const Register = () => {
           </div>
         </div>
         <div className="field">
+          {/* Confirm Password input */}
           <input
             name="confirmPassword"
             placeholder="Confirm Password"
@@ -158,6 +170,7 @@ const Register = () => {
               formik.errors.confirmPassword}
           </div>
         </div>
+        {/* Submit button */}
         <button type="submit">Register</button>
       </form>
     </div>

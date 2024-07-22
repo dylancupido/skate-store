@@ -5,23 +5,39 @@ import Login from "../components/login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/account.css";
 
+// Account component definition
 function Account() {
+  // State to manage the visibility of the register modal
   const [showRegister, setShowRegister] = useState(false);
+
+  // State to manage the visibility of the login modal
   const [showLogin, setShowLogin] = useState(false);
+
+  // State to manage the username
   const [username, setUsername] = useState("Demo");
+
+  // State to manage the logged-in status
   const [loggedIn, setLoggedIn] = useState(false);
 
+  // Function to close the register modal
   const closeRegisterModal = () => setShowRegister(false);
+
+  // Function to show the register modal
   const showRegisterModal = () => setShowRegister(true);
 
+  // Function to close the login modal
   const closeLoginModal = () => setShowLogin(false);
+
+  // Function to show the login modal
   const showLoginModal = () => setShowLogin(true);
 
+  // Function to handle successful login
   const handleLoginSuccess = () => {
     setLoggedIn(true);
     setShowLogin(false);
   };
 
+  // Render the Account component
   return (
     <div className="App">
       {/* Account Button with Dropdown */}
@@ -36,8 +52,10 @@ function Account() {
 
         <Dropdown.Menu>
           {loggedIn ? (
+            // Show "Logged in" text if user is logged in
             <Dropdown.Item disabled>Logged in</Dropdown.Item>
           ) : (
+            // Show "Register" and "Login" options if user is not logged in
             <>
               <Dropdown.Item onClick={showRegisterModal}>
                 Register

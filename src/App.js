@@ -13,11 +13,13 @@ function App() {
   return (
     <div className="App">
       <NavMenu />
-      <Routes>
-        <Route path="/" element={<HomePage items={Homeitems} />} />
-        <Route path="/store" element={<StorePage items={storeItems} />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<HomePage items={Homeitems} />} />
+          <Route path="/store" element={<StorePage items={storeItems} />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </div>
     </div>
   );
 }

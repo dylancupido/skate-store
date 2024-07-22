@@ -19,6 +19,9 @@ function HomePage({ items }) {
           <div className={item.homeText}>
             <h1 className="edit">{item.pageHeading}</h1>
           </div>
+          <div className={item.textDiv}>
+            <p className={item.textStyle}>{item.text}</p>
+          </div>
         </div>
       ))}
     </>

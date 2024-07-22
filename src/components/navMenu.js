@@ -1,30 +1,51 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Account from "./account";
 import "../styles/navMenu.css";
 
+// NavMenu component definition
 const NavMenu = () => {
   return (
     <nav className="nav-menu">
-      <Link to="/" className="nav-logo">
+      {/* Logo link to home page */}
+      <NavLink to="/" className="nav-logo">
         <img
-          src="assets/Skateboarder.png"
+          src="/assets/Skateboarder.png"
           alt="Home"
           className="nav-logo-img"
         />
-      </Link>
+      </NavLink>
       <div className="nav-items">
-        <Link to="/" className="nav-link">
+        {/* Navigation link to home page */}
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+        >
           Home
-        </Link>
-        <Link to="/store" className="nav-link">
+        </NavLink>
+        {/* Navigation link to store page */}
+        <NavLink
+          to="/store"
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+        >
           Store
-        </Link>
-        <Link to="/cart" className="nav-link">
+        </NavLink>
+        {/* Navigation link to cart page */}
+        <NavLink
+          to="/cart"
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+        >
           Cart
-        </Link>
+        </NavLink>
       </div>
       <div className="nav-account">
+        {/* Account component */}
         <Account />
       </div>
     </nav>

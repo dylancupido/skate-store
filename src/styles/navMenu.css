@@ -4,6 +4,12 @@
   align-items: center;
   padding: 1rem;
   background-color: rgba(43, 42, 42, 0.603);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .nav-items {
@@ -14,20 +20,21 @@
 }
 
 .nav-link {
-  color: #000;
-  text-decoration: none;
-  font-size: 200;
-  font-weight: 500;
   color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .nav-link:hover {
   text-decoration: underline;
+  color: white;
 }
 
-.nav-account {
-  display: flex;
-  align-items: center;
+.nav-link.active {
+  text-decoration: underline;
+  color: white;
+  font-weight: bold;
 }
 
 .nav-account {
@@ -38,5 +45,4 @@
 .nav-logo-img {
   width: 30px;
   height: 30px;
-  color: white;
 }

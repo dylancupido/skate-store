@@ -15,6 +15,9 @@ export const Homeitems = [
     image2: "assets/skateshopinside.jpg",
     alt2: "inside",
     className2: "insideImg",
+    textDiv: "aboutDiv",
+    textStyle: "aboutStyle",
+    text: "Welcome to Just Push, the ultimate skate shop crafted by skaters, for skaters. Born out of a shared passion for skateboarding, our store is more than just a place to buy gear—it's a hub for the skating community. Here, you'll find a curated selection of top-quality skateboards, apparel, and accessories, all handpicked by enthusiasts who understand what skaters need. At Just Push, we pride ourselves on offering expert advice, personalized service, and an environment where every skateboarder feels at home. Whether you're a seasoned pro or just starting out, our team is here to help you push your limits and ride with style. Join us at Just Push, where the skate culture thrives and every push counts.",
   },
   {
     image: "assets/homePage3.jpg",

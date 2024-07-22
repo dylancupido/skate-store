@@ -17,6 +17,7 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .homePageImg3 {
@@ -60,11 +61,38 @@
   width: 45%;
   height: auto;
   right: 30px;
+  border: 5px ridge rgba(0, 0, 0, 0.75);
 }
 
 .locationImg {
   position: absolute;
-  top: 200vh;
+  top: 230vh;
   width: 50%;
+  right: 30px;
   height: auto;
+  border: 5px ridge rgba(0, 0, 0, 0.75);
+}
+
+@font-face {
+  font-family: "BastradRegular";
+  src: url("/public/Bastrad-Regular.otf") format("opentype");
+}
+.edit {
+  font-family: "BastradRegular", sans-serif;
+  font-size: 7rem;
+}
+
+.aboutStyle {
+  font-family: Outfit;
+  color: white;
+
+  font-weight: 600;
+}
+
+.aboutDiv {
+  position: absolute;
+  top: 130vh;
+  padding: 10px;
+
+  width: 40%;
 }
