@@ -1,18 +1,26 @@
 import React from "react";
 import { useFormik } from "formik";
+import { useSelector } from "react-redux";
 
-const Login = ({ storedUsername, onLoginSuccess }) => {
+const Login = ({ onLoginSuccess }) => {
+  // Access stored username and password from Redux state
+  const storedUsername = useSelector((state) => state.user.username);
+  const storedPassword = useSelector((state) => state.user.password);
+
   const formik = useFormik({
     initialValues: {
       username: "",
       password: "",
     },
     onSubmit: (values) => {
-      if (values.username === storedUsername) {
+      if (
+        values.username === storedUsername &&
+        values.password === storedPassword
+      ) {
         console.log("Login successful");
         onLoginSuccess();
       } else {
-        console.log("Invalid username");
+        console.log("Invalid username or password");
       }
     },
     validate: (values) => {
@@ -20,7 +28,9 @@ const Login = ({ storedUsername, onLoginSuccess }) => {
       if (!values.username) {
         errors.username = "Username is required";
       }
-      if (values.password.length <= 7) {
+      if (!values.password) {
+        errors.password = "Password is required";
+      } else if (values.password.length < 8) {
         errors.password = "Password must be at least 8 characters long";
       }
       return errors;
