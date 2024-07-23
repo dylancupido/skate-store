@@ -1,117 +1,68 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Button,
-  Dropdown,
-  Modal,
-} from "react-bootstrap";
-import "../styles/cart.css";
+import React from "react";
+import { useFormik } from "formik";
 
-// Cart component definition
-const Cart = () => {
-  // Get the cart items from the Redux store
-  const cart = useSelector((state) => state.cart);
+const Login = ({ storedUsername, onLoginSuccess }) => {
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    onSubmit: (values) => {
+      if (values.username === storedUsername) {
+        console.log("Login successful");
+        onLoginSuccess();
+      } else {
+        console.log("Invalid username");
+      }
+    },
+    validate: (values) => {
+      const errors = {};
+      if (!values.username) {
+        errors.username = "Username is required";
+      }
+      if (values.password.length <= 7) {
+        errors.password = "Password must be at least 8 characters long";
+      }
+      return errors;
+    },
+  });
 
-  // Calculate the total price of items in the cart
-  const cartTotal = cart.reduce(
-    (total, item) => total + parseFloat(item.price.slice(1)),
-    0
-  );
-
-  // State to manage the visibility of the shipping info modal
-  const [show, setShow] = useState(false);
-
-  // State to manage the selected shipping method
-  const [shippingMethod, setShippingMethod] = useState("Select Shipping");
-
-  // Function to handle closing the modal
-  const handleClose = () => setShow(false);
-
-  // Function to handle showing the modal
-  const handleShow = () => setShow(true);
-
-  // Function to handle selecting a shipping method from the dropdown
-  const handleSelect = (eventKey) => {
-    setShippingMethod(eventKey);
-  };
-
-  // Render the cart component
   return (
-    <Container className="cart-container">
-      <h2>Your Cart</h2>
-      <Row>
-        {cart.map((item) => (
-          // Render each cart item as a card
-          <Col md={4} lg={3} key={item.id} className="mb-4">
-            <Card>
-              <Card.Img variant="top" src={item.imageUrl} />
-              <Card.Body>
-                <Card.Title>{item.name}</Card.Title>
-                <Card.Text>{item.description}</Card.Text>
-                <Card.Text>{item.price}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-      <div className="cart-summary">
-        <h3>Total: R{cartTotal.toFixed(2)}</h3>
-        {/* Dropdown for selecting shipping method */}
-        <Dropdown onSelect={handleSelect} className="d-inline mx-2">
-          <Dropdown.Toggle variant="secondary">
-            Method: {shippingMethod}
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item eventKey="Standard Shipping">
-              Standard Shipping
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="Express Shipping">
-              Express Shipping
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="Overnight Shipping">
-              Overnight Shipping
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        {/* Button to show shipping info modal */}
-        <Button
-          variant="info"
-          onClick={handleShow}
-          style={{ backgroundColor: "white", border: "black" }}
-        >
-          <img
-            src="assets/question-sign.png"
-            alt="info"
-            style={{ width: "20px", height: "20px", backgroundColor: "white" }}
+    <div>
+      <form onSubmit={formik.handleSubmit}>
+        <div className="field">
+          <input
+            name="username"
+            placeholder="Username"
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
-        </Button>
-      </div>
-
-      {/* Modal to display shipping methods info */}
-      <Modal show={show} onHide={handleClose} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Shipping Methods</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h5>Standard Shipping</h5>
-          <p>Delivery within 5-7 business days.</p>
-          <h5>Express Shipping</h5>
-          <p>Delivery within 2-3 business days.</p>
-          <h5>Overnight Shipping</h5>
-          <p>Delivery by next business day.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </Container>
+          <div className="error">
+            {formik.errors.username &&
+              formik.touched.username &&
+              formik.errors.username}
+          </div>
+        </div>
+        <div className="field">
+          <input
+            name="password"
+            placeholder="Password"
+            type="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <div className="error">
+            {formik.errors.password &&
+              formik.touched.password &&
+              formik.errors.password}
+          </div>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
 };
 
-export default Cart;
+export default Login;
