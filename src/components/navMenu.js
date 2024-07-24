@@ -44,6 +44,12 @@ const NavMenu = () => {
           Cart
         </NavLink>
       </div>
+      <div className="nav-welcome">
+        {/* Welcome message */}
+        <p>
+          Welcome! For Demo account use username: "Demo" and password "12345678"
+        </p>
+      </div>
       <div className="nav-account">
         {/* Account component */}
         <Account />
