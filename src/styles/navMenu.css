@@ -46,3 +46,15 @@
   width: 30px;
   height: 30px;
 }
+
+.nav-welcome {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-welcome p {
+  font-size: 14px; /* Adjust the font size as needed */
+  color: #ffffff; /* Adjust the color as needed */
+  margin: 0; /* Remove margin to prevent layout shifts */
+}

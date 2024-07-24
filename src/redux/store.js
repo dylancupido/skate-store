@@ -4,8 +4,8 @@ import { createStore, combineReducers } from "redux";
 const initialState = {
   cart: [],
   user: {
-    username: "",
-    password: "",
+    username: "Demo",
+    password: "12345678",
   },
 };
 
@@ -27,6 +27,7 @@ const userReducer = (state = initialState.user, action) => {
   switch (action.type) {
     case REGISTER_USER:
       return {
+        ...state, // Maintain other user state properties if any
         username: action.payload.username,
         password: action.payload.password,
       };
